@@ -8,6 +8,10 @@ TDD wasn't a thing I was aware of when I used to write C. Years after I'd drunk 
 
 I working on this publicly so people who are way better at C than I, can tell me how I'm doing this a stupid way and what I can do to make this more useful.
 
+**Why not CUnit/CUT/etc?**
+
+I didn't want to adopt a whole test framework, I just wanted more useful and expressive assertions than those provided by `<assert.h>`.
+
 ## Usage
 ```c
 #include "tdd.h"
@@ -22,6 +26,7 @@ int main () {
 ```
 
 **Output**:
+
 ![](docs/ss.png)
 
 
