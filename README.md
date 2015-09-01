@@ -45,6 +45,7 @@ int test_someOtherFunction() {
 int main() {
   test(test_someFunction);
   test(test_someOtherFunction);
+  test_summary();
   return 0;
 }
 ```
