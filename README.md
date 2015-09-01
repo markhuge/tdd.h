@@ -13,14 +13,38 @@ I working on this publicly so people who are way better at C than I, can tell me
 I didn't want to adopt a whole test framework, I just wanted more useful and expressive assertions than those provided by `<assert.h>`.
 
 ## Usage
-```c
-#include "tdd.h"
-int foo=0, bar=5;
 
-int main () {
-  test("Foo should equal 0",     foo == 0);
-  test("Bar should equal 5",     bar == 5);
-  test("This will totally fail", 1 == 0);
+Let's say we have a header file called `myprogram.h` that we want to test:
+
+```c
+/* myprgram.h */
+
+#include <stdio.h>
+
+int someFunction() { return 4; }
+int someOtherFunction() { return 0; }
+```
+
+Our test.c might look like this:
+```c
+#include <stdio.h>
+#include "tdd.h"
+#include "myprogram.h"
+
+int test_someFunction() {
+  expect("someFunction doesn't value of 100", someFunction() != 100);
+  expect("someFunction has value of 4", someFunction() == 4);
+  return 0;
+}
+
+int test_someOtherFunction() {
+  expect("this test will fail", someOtherFunction() == 5);
+  return 0;
+}
+
+int main() {
+  test(test_someFunction);
+  test(test_someOtherFunction);
   return 0;
 }
 ```
